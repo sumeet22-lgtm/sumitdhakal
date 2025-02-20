@@ -4,51 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sumit Dhakal - Web Developer & Student</title>
-</head>
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box; background: linear-gradient(to right, #ff7e5f, #feb47b);">
-    <header style="background: #fff; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center;">
-        <h1 style="color: #ff5733; transition: transform 0.3s;">Sumit Dhakal</h1>
-    
-    <h1 style="font-size: 4em; letter-spacing: 5px;">Sumit Dhakal</h1>
-</div>
+    <style>
+        /* Background Animation */
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
+        /* Text and Element Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b, #ff7e5f, #feb47b);
+            background-size: 400% 400%;
+            animation: gradientBackground 10s ease infinite;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeInUp 1s ease;
+        }
+        header h1 {
+            color: #ff5733;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        header h1:hover {
+            transform: scale(1.1);
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s, transform 0.3s;
+        }
+        nav a:hover {
+            color: #ff5733;
+            transform: scale(1.1);
+        }
+
+        /* Section Styles */
+        section {
+            text-align: center;
+            padding: 100px 20px;
+            animation: fadeInUp 1s ease;
+        }
+        section h2 {
+            color: #ff5733;
+            animation: fadeInUp 1.5s ease;
+        }
+        section p {
+            animation: fadeInUp 2s ease;
+        }
+
+        /* Gallery Styles */
+        #gallery img {
+            width: 300px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            animation: fadeInUp 2s ease;
+        }
+        #gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            animation: fadeInUp 2s ease;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sumit Dhakal</h1>
         <nav>
-            <a href="#about" style="margin: 0 10px; text-decoration: none; color: #333; transition: color 0.3s, transform 0.3s;">About Me</a>
-            <a href="#gallery" style="margin: 0 10px; text-decoration: none; color: #333; transition: color 0.3s, transform 0.3s;">Gallery</a>
-            <a href="#contact" style="margin: 0 10px; text-decoration: none; color: #333; transition: color 0.3s, transform 0.3s;">Contact</a>
+            <a href="#about">About Me</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
-    <section style="text-align: center; padding: 100px 20px; background: #f4f4f9;">
-        <h2 style="color: #ff5733;">Web Developer & Student</h2>
+    <section>
+        <h2>Web Developer & Student</h2>
         <p>Building professional web experiences</p>
     </section>
 
-    <section id="about" style="padding: 50px 20px; text-align: center;">
-        <h2 style="color: #ff5733;">About Me</h2>
-        <p>Hello! I’m Sumit Dhakal,from Sainamaina-4, Murgiya Rupandehi.  a passionate web developer and student. I enjoy creating functional and visually appealing websites. My journey in web development is fueled by curiosity and creativity.</p>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I’m Sumit Dhakal, from Sainamaina-4, Murgiya Rupandehi. A passionate web developer and student. I enjoy creating functional and visually appealing websites. My journey in web development is fueled by curiosity and creativity.</p>
     </section>
 
-    <section id="gallery" style="padding: 50px 20px; text-align: center;">
-        <h2 style="color: #ff5733;">Gallery</h2>
+    <section id="gallery">
+        <h2>Gallery</h2>
         <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-            <img src="Gallary.jpg.jpeg" alt="Gallery Item 1" style="width: 400px; border-radius: 10px; transition: transform 0.3s;">
-            <img src="Gallary2.jpg.jpeg" alt="Gallery Item 2" style="width: 350px; border-radius: 10px; transition: transform 0.3s;">
-            <img src="Gallary3.jpg.jpeg" alt="Gallery Item 3" style="width: 300px; border-radius: 10px; transition: transform 0.3s;">
+            <img src="Gallary.jpg.jpeg" alt="Gallery Item 1">
+            <img src="Gallary2.jpg.jpeg" alt="Gallery Item 2">
+            <img src="Gallary3.jpg.jpeg" alt="Gallery Item 3">
         </div>
     </section>
 
-    <section id="contact" style="padding: 50px 20px; text-align: center;">
-        <h2 style="color: #ff5733;">Contact</h2>
+    <section id="contact">
+        <h2>Contact</h2>
         <div>
-            <a href="https://www.instagram.com/sumeet_1_1?igsh=MWt1cGduNzJ2Z3M1dw==" target="_blank" style="margin: 0 10px; text-decoration: none; color: #333; transition: color 0.3s, transform 0.3s;">Instagram</a>
-            <a href="https://www.facebook.com/profile.php?id=100073269189955" target="_blank" style="margin: 0 10px; text-decoration: none; color: #333; transition: color 0.3s, transform 0.3s;">Facebook</a>
-            <a href="https://youtube.com/@sumeet_cr7?si=f5EPNQ9k3FIA5t1H" target="_blank" style="margin: 0 10px; text-decoration: none; color: #333; transition: color 0.3s, transform 0.3s;">YouTube</a>
-            <a href="https://www.tiktok.com" target="_blank" style="margin: 0 10px; text-decoration: none; color: #333; transition: color 0.3s, transform 0.3s;">TikTok</a>
+            <a href="https://www.instagram.com/sumeet_1_1?igsh=MWt1cGduNzJ2Z3M1dw==" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=100073269189955" target="_blank">Facebook</a>
+            <a href="https://youtube.com/@sumeet_cr7?si=f5EPNQ9k3FIA5t1H" target="_blank">YouTube</a>
+            <a href="https://www.tiktok.com/@sumeet_cr77" target="_blank">TikTok</a>
         </div>
     </section>
 
-    <footer style="background: #333; color: #fff; padding: 20px; text-align: center;">
+    <footer>
         &copy; 2025 Sumit Dhakal. All Rights Reserved.
     </footer>
 </body>
