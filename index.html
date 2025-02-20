@@ -20,28 +20,29 @@
 
         /* Global Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background: linear-gradient(45deg, #ff7e5f, #feb47b, #ff7e5f, #feb47b);
+            background: linear-gradient(45deg, #ff9966, #ff5e62, #ff9966, #ff5e62);
             background-size: 400% 400%;
-            animation: gradientBackground 10s ease infinite;
+            animation: gradientBackground 15s ease infinite;
             overflow-x: hidden;
+            color: #fff;
         }
 
         /* Header Styles */
         header {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.5);
             padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
             display: flex;
             justify-content: space-between;
             align-items: center;
             animation: fadeInUp 1s ease;
         }
         header h1 {
-            color: #ff5733;
+            color: #ffe600;
             transition: transform 0.3s;
             cursor: pointer;
         }
@@ -51,25 +52,38 @@
         nav a {
             margin: 0 10px;
             text-decoration: none;
-            color: #333;
+            color: #ffe600;
             transition: color 0.3s, transform 0.3s;
         }
         nav a:hover {
-            color: #ff5733;
+            color: #fff;
             transform: scale(1.1);
         }
 
         /* Section Styles */
         section {
             text-align: center;
-            padding: 100px 20px;
+            padding: 80px 20px;
             animation: fadeInUp 1s ease;
         }
         section h2 {
-            color: #ff5733;
+            color: #ffe600;
             animation: fadeInUp 1.5s ease;
         }
         section p {
+            animation: fadeInUp 2s ease;
+            color: #f0f0f0;
+        }
+
+        /* Quote Section */
+        .quote {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 5px solid #ffe600;
+            padding: 20px;
+            margin: 40px;
+            font-style: italic;
+            color: #fff;
+            font-size: 1.5em;
             animation: fadeInUp 2s ease;
         }
 
@@ -86,11 +100,23 @@
 
         /* Footer Styles */
         footer {
-            background: #333;
+            background: rgba(0, 0, 0, 0.8);
             color: #fff;
             padding: 20px;
             text-align: center;
             animation: fadeInUp 2s ease;
+        }
+
+        /* Social Media Links */
+        #contact a {
+            color: #ffe600;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s, transform 0.3s;
+        }
+        #contact a:hover {
+            color: #fff;
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -107,6 +133,10 @@
     <section>
         <h2>Web Developer & Student</h2>
         <p>Building professional web experiences</p>
+    </section>
+
+    <section class="quote">
+        <p>“Success isn't just about what you accomplish in your life; it's about what you inspire others to do.”</p>
     </section>
 
     <section id="about">
