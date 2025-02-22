@@ -126,12 +126,25 @@
         &copy; 2025 Sumit Dhakal. All Rights Reserved.
     <section id="gallery">
     <h2>Gallery</h2>
-    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-        <img src="Gallary.jpg.jpeg" alt="Gallery Item 1" style="width: 300px; border-radius: 10px; transition: transform 0.3s;">
-        <img src="Gallary2.jpg.jpeg" alt="Gallery Item 2" style="width: 300px; border-radius: 10px; transition: transform 0.3s;">
-        <img src="Gallary3.jpg.jpeg" alt="Gallery Item 3" style="width: 300px; border-radius: 10px; transition: transform 0.3s;">
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <img src="Gallary.jpg.jpeg" alt="Gallery Item 1" class="gallery-item">
+        <img src="Gallary2.jpg.jpeg" alt="Gallery Item 2" class="gallery-item">
+        <img src="Gallary3.jpg.jpeg" alt="Gallery Item 3" class="gallery-item">
     </div>
 </section>
+
+<style>
+    .gallery-item {
+        width: 300px;
+        border-radius: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .gallery-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+</style>
 
 <footer>
 </body>
