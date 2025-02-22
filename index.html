@@ -11,58 +11,102 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
+        /* Background Animation */
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Text and Element Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Waving Animation for the Image */
+        @keyframes waveAnimation {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
         /* Global Styles */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #282828;
+            background: linear-gradient(45deg, #ff9966, #ff5e62, #ff9966, #ff5e62);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+            overflow-x: hidden;
             color: #fff;
         }
 
         /* Header Styles */
         header {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.5);
             padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+            position: relative;
+        }
+
+        /* Image in Top Left Corner */
+        .header-img {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 60px; /* Adjust the size of your image */
+            animation: waveAnimation 2s ease-in-out infinite;
         }
 
         header h1 {
             color: #ffe600;
             font-family: 'Open Sans', sans-serif;
+            transition: transform 0.3s;
             cursor: pointer;
+        }
+
+        header h1:hover {
+            transform: scale(1.1);
         }
 
         nav a {
             margin: 0 10px;
             text-decoration: none;
             color: #ffe600;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
 
         nav a:hover {
             color: #fff;
+            transform: scale(1.1);
         }
 
         /* Section Styles */
         section {
             text-align: center;
             padding: 80px 20px;
+            animation: fadeInUp 1s ease;
         }
-
         section h2 {
             color: #ffe600;
+            animation: fadeInUp 1.5s ease;
             font-size: 2.5em;
             font-weight: 600;
         }
-
         section p {
+            animation: fadeInUp 2s ease;
             color: #f0f0f0;
             font-size: 1.1em;
+            font-weight: 500;
             line-height: 1.6;
         }
 
@@ -74,7 +118,6 @@
             margin: 30px 0;
             box-shadow: 0 5px 10px rgba(0,0,0,0.3);
         }
-
         #about h2 {
             font-weight: bold;
             font-size: 2.8em;
@@ -83,14 +126,25 @@
             letter-spacing: 2px;
         }
 
+        /* Quote Section */
+        .quote {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 5px solid #ffe600;
+            padding: 20px;
+            margin: 40px;
+            font-style: italic;
+            color: #fff;
+            font-size: 1.5em;
+            animation: fadeInUp 2s ease;
+        }
+
         /* Gallery Styles */
         #gallery img {
             width: 300px;
             border-radius: 10px;
             transition: transform 0.3s;
-            margin: 10px;
+            animation: fadeInUp 2s ease;
         }
-
         #gallery img:hover {
             transform: scale(1.05);
         }
@@ -101,6 +155,7 @@
             color: #fff;
             padding: 20px;
             text-align: center;
+            animation: fadeInUp 2s ease;
         }
 
         /* Social Media Links */
@@ -108,11 +163,11 @@
             color: #ffe600;
             text-decoration: none;
             margin: 0 15px;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
-
         #contact a:hover {
             color: #fff;
+            transform: scale(1.1);
         }
 
         /* Mobile Responsiveness */
@@ -145,6 +200,7 @@
 </head>
 <body>
     <header>
+        <img src="sumeet.png" alt="Sumit Dhakal" class="header-img">
         <h1>Sumit Dhakal</h1>
         <nav>
             <a href="#about">About Me</a>
@@ -158,9 +214,13 @@
         <p>Building professional web experiences</p>
     </section>
 
+    <section class="quote">
+        <p>“Success isn't just about what you accomplish in your life; it's about what you inspire others to do.”</p>
+    </section>
+
     <section id="about">
         <h2>About Me</h2>
-        <p>Hello! I’m Sumit Dhakal, a Class 12 student from Sainamaina-4, Murgiya Rupandehi. I'm passionate about web development and enjoy creating responsive websites using HTML, CSS, and JavaScript. My goal is to build innovative and user-friendly websites while learning new skills and improving my expertise in the field of web development. Besides coding, I am an avid football fan and a dedicated follower of Cristiano Ronaldo. I believe in continuously striving for excellence in both my personal and professional life. Feel free to connect with me through my social media profiles below!</p>
+        <p>Hello! I’m Sumit Dhakal from Sainamaina-4, Murgiya Rupandehi. Currently, I’m a Class 12 student with a keen interest in web development. I am passionate about building responsive and visually appealing websites that provide great user experiences. My journey in web development started with curiosity and has grown into a creative passion. I enjoy learning new technologies and continuously improving my skills. My goal is to combine creativity with technical expertise to create innovative web solutions. Outside of coding, I’m an avid football fan, and my favorite player is Cristiano Ronaldo. His determination and dedication inspire me to push my limits, both in sports and in my personal growth. I am also active on social media platforms like TikTok, Instagram, Facebook, and YouTube, where I share my interests and connect with people. In addition to my technical pursuits, I have a helping nature and am involved in social work. I believe in making a positive impact on my community and lending a helping hand to those in need. I am always open to learning new things, meeting new people, and collaborating on exciting projects. Feel free to reach out if you'd like to know more or work together on any creative ventures!</p>
     </section>
 
     <section id="gallery">
@@ -183,8 +243,7 @@
     </section>
 
     <footer>
-        <p>© 2025 Sumit Dhakal. All Rights Reserved.</p>
-        <p><a href="sitemap.xml">Sitemap</a></p>
+        &copy; 2025 Sumit Dhakal. All Rights Reserved.
     </footer>
 </body>
 </html>
