@@ -15,9 +15,17 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(45deg, #ff6b81, #f8cdda, #ff7b54, #ffc45c);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
             color: #fff;
             overflow-x: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         header {
@@ -34,14 +42,15 @@
         }
 
         header h1 {
-            color: #ffe600;
+            color: #fff;
             font-family: 'Open Sans', sans-serif;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s, color 0.3s;
         }
 
         header h1:hover {
             transform: scale(1.1);
+            color: #ffe600;
         }
 
         nav a {
@@ -66,6 +75,7 @@
             font-size: 2.5em;
             font-weight: 600;
             text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         section p {
@@ -81,6 +91,47 @@
             box-shadow: 0 5px 10px rgba(0,0,0,0.3);
             max-width: 800px;
             margin: 30px auto;
+        }
+
+        #gallery {
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item {
+            width: 300px;
+            height: 200px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        #contact {
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        #contact a {
+            color: #ffe600;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        #contact a:hover {
+            color: #fff;
+            transform: scale(1.1);
         }
 
         footer {
@@ -111,6 +162,15 @@
         <p>Hello! I’m Sumit Dhakal from Sainamaina-4, Murgiya Rupandehi. Currently, I’m a Class 12 student with a keen interest in web development. My journey in web development started with curiosity and has grown into a creative passion. I enjoy learning new technologies and continuously improving my skills. My goal is to combine creativity with technical expertise to create innovative web solutions. I am also active on social media platforms where I share my interests and connect with people. In addition to my technical pursuits, I am involved in social work and believe in making a positive impact on my community. Feel free to reach out if you'd like to know more or collaborate on exciting projects!</p>
     </section>
 
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <img src="Gallary.jpg.jpeg" alt="Gallery Item 1" class="gallery-item">
+            <img src="Gallary2.jpg.jpeg" alt="Gallery Item 2" class="gallery-item">
+            <img src="Gallary3.jpg.jpeg" alt="Gallery Item 3" class="gallery-item">
+        </div>
+    </section>
+
     <section id="contact">
         <h2>Contact</h2>
         <p>Feel free to connect with me on my social media platforms:</p>
@@ -122,30 +182,8 @@
         </div>
     </section>
 
-<footer>
+    <footer>
         &copy; 2025 Sumit Dhakal. All Rights Reserved.
-    <section id="gallery">
-    <h2>Gallery</h2>
-    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-        <img src="Gallary.jpg.jpeg" alt="Gallery Item 1" class="gallery-item">
-        <img src="Gallary2.jpg.jpeg" alt="Gallery Item 2" class="gallery-item">
-        <img src="Gallary3.jpg.jpeg" alt="Gallery Item 3" class="gallery-item">
-    </div>
-</section>
-
-<style>
-    .gallery-item {
-        width: 300px;
-        border-radius: 10px;
-        transition: transform 0.3s, box-shadow 0.3s;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-    .gallery-item:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    }
-</style>
-
-<footer>
+    </footer>
 </body>
 </html>
