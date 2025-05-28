@@ -1,277 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sumit Dhakal - Web Developer</title>
-  <meta name="description" content="Welcome to Sumit Dhakal's personal portfolio. A web developer and Class 12 graduate from Sainamaina-4, Murgiya Rupandehi.">
-  <meta name="keywords" content="Sumit Dhakal, Web Developer, Portfolio, Student, Web Development, HTML, CSS">
-  <meta name="author" content="Sumit Dhakal">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sumit Dhakal - Web Developer & Student</title>
+<meta name="description" content="Welcome to Sumit Dhakal's personal portfolio. A web developer and Class 12 graduate from Sainamaina-4, Murgiya Rupandehi." />
+<meta name="keywords" content="Sumit Dhakal, Web Developer, Portfolio, Student, Web Development, HTML, CSS" />
+<meta name="author" content="Sumit Dhakal" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+<style>
+  /* Reset & Basics */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #ff6b81, #f8cdda, #ff7b54, #ffc45c);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    color: #fff;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(45deg, #ff6b81, #f8cdda, #ff7b54, #ffc45c);
-      background-size: 400% 400%;
-      animation: gradientAnimation 10s ease infinite;
-      color: #fff;
-      overflow-x: hidden;
-      transition: background 0.5s, color 0.5s;
-    }
+  /* Dark Mode Styles */
+  body.dark {
+    background: #121212;
+    color: #ddd;
+  }
 
-    @keyframes gradientAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+  /* Header */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  }
+  header h1 {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  header h1:hover {
+    color: #ffe600;
+    transform: scale(1.1);
+  }
+  nav a {
+    color: #ffe600;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  nav a:hover {
+    color: #fff;
+    transform: scale(1.1);
+  }
 
-    body.light-mode {
-      background: #f0f0f0;
-      color: #333;
-    }
+  /* Dark mode nav links */
+  body.dark nav a {
+    color: #ffd700;
+  }
 
-    header {
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.6);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 10;
-    }
+  /* Mode Toggle Button */
+  .mode-toggle {
+    background: none;
+    border: none;
+    color: #ffe600;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-left: 20px;
+  }
+  .mode-toggle:hover {
+    transform: scale(1.2);
+  }
+  body.dark .mode-toggle {
+    color: #ffd700;
+  }
 
-    body.light-mode header {
-      background: rgba(255, 255, 255, 0.9);
-      color: #000;
-    }
+  /* Section Styles */
+  main {
+    padding-top: 90px; /* header height + some space */
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  section {
+    margin: 60px 20px;
+    padding: 40px 30px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  section h2 {
+    color: #ffe600;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  }
+  section p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #eee;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  body.dark section {
+    background: rgba(30, 30, 30, 0.85);
+  }
 
-    header h1 {
-      color: #fff;
-      font-family: 'Open Sans', sans-serif;
-      cursor: pointer;
-      transition: transform 0.3s, color 0.3s;
-    }
+  /* Gallery Section */
+  #gallery {
+    padding-bottom: 30px;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+  }
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
 
-    body.light-mode header h1 {
-      color: #000;
-    }
+  /* Hover overlay with caption */
+  .gallery-item::after {
+    content: attr(data-caption);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    pointer-events: none;
+  }
+  .gallery-item:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    header h1:hover {
-      transform: scale(1.1);
-      color: #ffe600;
-    }
+  /* Contact Section */
+  #contact a {
+    color: #ffe600;
+    font-size: 1.2rem;
+    margin: 0 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  #contact a:hover {
+    color: #fff;
+    transform: scale(1.15);
+  }
+  body.dark #contact a {
+    color: #ffd700;
+  }
 
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #ffe600;
-      transition: color 0.3s, transform 0.3s;
-    }
+  /* Footer */
+  footer {
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    color: #fff;
+    padding: 18px 10px;
+    font-size: 1rem;
+    margin-top: 40px;
+  }
+  body.dark footer {
+    background: #222;
+  }
 
-    body.light-mode nav a {
-      color: #333;
-    }
-
-    nav a:hover {
-      color: #fff;
-      transform: scale(1.1);
-    }
-
-    section {
-      text-align: center;
-      padding: 100px 20px;
-    }
-
+  /* Responsive text sizing */
+  @media (max-width: 600px) {
     section h2 {
-      color: #ffe600;
-      font-size: 2.5em;
-      font-weight: 600;
-      text-transform: uppercase;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-size: 2rem;
     }
-
-    body.light-mode section h2 {
-      text-shadow: none;
-      color: #333;
-    }
-
     section p {
-      font-size: 1.1em;
-      line-height: 1.6;
+      font-size: 1rem;
     }
-
-    #about, #gallery, #contact {
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-      max-width: 800px;
-      margin: 30px auto;
-    }
-
-    body.light-mode #about,
-    body.light-mode #gallery,
-    body.light-mode #contact {
-      background: #fff;
-      color: #000;
-    }
-
-    .gallery-item {
-      width: 300px;
-      height: 200px;
-      border-radius: 10px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-
-    .gallery-item:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    }
-
-    #contact a {
-      color: #ffe600;
-      text-decoration: none;
-      font-size: 1.2em;
-      transition: color 0.3s, transform 0.3s;
-    }
-
-    #contact a:hover {
-      color: #fff;
-      transform: scale(1.1);
-    }
-
-    body.light-mode #contact a {
-      color: #0077cc;
-    }
-
-    footer {
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-
-    body.light-mode footer {
-      background: #222;
-      color: #ccc;
-    }
-
-    .toggle-buttons {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .toggle-buttons button {
-      background: transparent;
-      border: none;
-      font-size: 1.5em;
-      cursor: pointer;
-      color: #ffe600;
-      transition: transform 0.3s ease;
-    }
-
-    .toggle-buttons button:hover {
-      transform: scale(1.2);
-    }
-
-    body.light-mode .toggle-buttons button {
-      color: #333;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Sumit Dhakal</h1>
-    <nav class="toggle-buttons">
-      <a href="#about">About Me</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-      <button id="toggle-mode" title="Toggle Mode">🌙</button>
-      <button id="toggle-music" title="Toggle Music">🎵</button>
-    </nav>
-  </header>
+<header>
+  <h1>Sumit Dhakal</h1>
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button aria-label="Toggle dark/light mode" class="mode-toggle" id="modeToggle" title="Toggle Dark/Light Mode">🌙</button>
+</header>
 
-  <section data-aos="fade-up">
-    <h2>Web Developer</h2>
+<main>
+  <section id="intro" class="visible">
+    <h2>Web Developer & Student</h2>
     <p>Building professional web experiences</p>
   </section>
 
-  <section id="about" data-aos="zoom-in">
+  <section id="about">
     <h2>About Me</h2>
-    <p>
-      Hello! I’m Sumit Dhakal from Sainamaina-4, Murgiya Rupandehi. I have recently completed Class 12 and continue to pursue my passion for web development. My journey in web development started with curiosity and has grown into a creative passion. I enjoy learning new technologies and continuously improving my skills. My goal is to combine creativity with technical expertise to create innovative web solutions. I am also active on social media platforms where I share my interests and connect with people. In addition to my technical pursuits, I am involved in social work and believe in making a positive impact on my community.
-    </p>
+    <p>Hello! I’m Sumit Dhakal from Sainamaina-4, Murgiya Rupandehi. I have completed my Class 12 and am passionate about web development. I enjoy learning new technologies and combining creativity with technical skills to build innovative web solutions. Besides tech, I am involved in social work and believe in positively impacting my community. Feel free to reach out for collaboration or to connect!</p>
   </section>
 
-  <section id="gallery" data-aos="fade-up">
+  <section id="gallery">
     <h2>Gallery</h2>
-    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-      <img src="Gallary.jpg.jpeg" alt="Gallery Item 1" class="gallery-item" data-aos="zoom-in">
-      <img src="Gallary2.jpg.jpeg" alt="Gallery Item 2" class="gallery-item" data-aos="zoom-in">
-      <img src="Gallary3.jpg.jpeg" alt="Gallery Item 3" class="gallery-item" data-aos="zoom-in">
+    <div class="gallery-grid">
+      <div class="gallery-item" data-caption="Gallery Item 1">
+        <img src="Gallary.jpg.jpeg" alt="Gallery Item 1" />
+      </div>
+      <div class="gallery-item" data-caption="Gallery Item 2">
+        <img src="Gallary2.jpg.jpeg" alt="Gallery Item 2" />
+      </div>
+      <div class="gallery-item" data-caption="Gallery Item 3">
+        <img src="Gallary3.jpg.jpeg" alt="Gallery Item 3" />
+      </div>
     </div>
   </section>
 
-  <section id="contact" data-aos="zoom-in">
+  <section id="contact">
     <h2>Contact</h2>
     <p>Feel free to connect with me on my social media platforms:</p>
-    <div>
-      <a href="https://www.instagram.com/sumeet_1_1" target="_blank">Instagram</a> |
-      <a href="https://www.facebook.com/profile.php?id=100073269189955" target="_blank">Facebook</a> |
-      <a href="https://youtube.com/@sumeet_cr7" target="_blank">YouTube</a> |
-      <a href="https://www.tiktok.com/@sumeet_cr77" target="_blank">TikTok</a>
-    </div>
+    <p>
+      <a href="https://www.instagram.com/sumeet_1_1" target="_blank" rel="noopener noreferrer">Instagram</a> |
+      <a href="https://www.facebook.com/profile.php?id=100073269189955" target="_blank" rel="noopener noreferrer">Facebook</a> |
+      <a href="https://youtube.com/@sumeet_cr7" target="_blank" rel="noopener noreferrer">YouTube</a> |
+      <a href="https://www.tiktok.com/@sumeet_cr77" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </p>
   </section>
+</main>
 
-  <footer>
-    &copy; 2025 Sumit Dhakal. All Rights Reserved.
-  </footer>
+<footer>
+  &copy; 2025 Sumit Dhakal. All Rights Reserved.
+</footer>
 
-  <!-- Background Music -->
-  <audio id="bg-music" loop autoplay muted>
-    <source src="your-music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+<!-- Background Music (Adele - Set Fire to the Rain) -->
+<audio id="bgMusic" src="https://cdn.pixabay.com/download/audio/2023/03/29/audio_7ca62038b3.mp3?filename=sunny-ambient-sound-10937.mp3" loop autoplay muted></audio>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
+<script>
+  // Dark / Light Mode Toggle
+  const modeToggle = document.getElementById('modeToggle');
+  const body = document.body;
+  const bgMusic = document.getElementById('bgMusic');
 
-    const toggleModeBtn = document.getElementById("toggle-mode");
-    const toggleMusicBtn = document.getElementById("toggle-music");
-    const bgMusic = document.getElementById("bg-music");
+  // Load saved mode from localStorage or default to light
+  const savedMode = localStorage.getItem('mode') || 'light';
+  if(savedMode === 'dark') {
+    body.classList.add('dark');
+    modeToggle.textContent = '☀️';
+  } else {
+    modeToggle.textContent = '🌙';
+  }
 
-    toggleModeBtn.addEventListener("click", () => {
-      document.body.classList.toggle("light-mode");
-      toggleModeBtn.textContent = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
-    });
+  modeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark');
+    if(body.classList.contains('dark')) {
+      modeToggle.textContent = '☀️';
+      localStorage.setItem('mode', 'dark');
+    } else {
+      modeToggle.textContent = '🌙';
+      localStorage.setItem('mode', 'light');
+    }
+  });
 
-    toggleMusicBtn.addEventListener("click", () => {
-      if (bgMusic.muted) {
-        bgMusic.muted = false;
-        toggleMusicBtn.textContent = "🔇";
-        bgMusic.play();
-      } else {
-        bgMusic.muted = true;
-        toggleMusicBtn.textContent = "🎵";
+  // Animate sections on scroll
+  function revealOnScroll() {
+    const sections = document.querySelectorAll('section');
+    const triggerBottom = window.innerHeight * 0.85;
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if(sectionTop < triggerBottom) {
+        section.classList.add('visible');
       }
     });
-  </script>
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+
+  // Autoplay music on user interaction (some browsers require user gesture)
+  window.addEventListener('click', () => {
+    if(bgMusic.paused) {
+      bgMusic.play();
+      bgMusic.muted = false;
+    }
+  });
+</script>
+
 </body>
 </html>
