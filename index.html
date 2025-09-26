@@ -1,295 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sumeet Dhakal Portfolio</title>
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="myphoto.png">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sumit Dhakal - Web Developer & Student</title>
+<meta name="description" content="Welcome to Sumit Dhakal's personal portfolio. A web developer and Class 12 graduate from Sainamaina-4, Murgiya Rupandehi." />
+<meta name="keywords" content="Sumit Dhakal, Web Developer, Portfolio, Student, Web Development, HTML, CSS" />
+<meta name="author" content="Sumit Dhakal" />
+<link rel="icon" href="myphoto.png" type="image/png" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
 
-  <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+  /* Reset & Basics */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+  }
 
-    body {
-      font-family: Arial, sans-serif;
-      color: white;
-      background: radial-gradient(circle at top left, #1a2a6c, #b21f1f, #fdbb2d);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      overflow-x: hidden;
-      position: relative;
-    }
+  /* Digitalized Animated Background */
+  body::before {
+    content: '';
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    z-index: -1;
+    background: radial-gradient(circle at 20% 20%, #1a1a2e, #162447 30%, #1f4068 60%, #e43f5a 100%);
+    background-size: 400% 400%;
+    animation: gradientAnimation 20s ease infinite;
+  }
 
-    /* Gradient Animation */
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
+  body::after {
+    content: "";
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background-image: radial-gradient(rgba(255,255,255,0.15) 2px, transparent 2px);
+    background-size: 50px 50px;
+    animation: moveDots 20s linear infinite;
+    z-index: -1;
+  }
 
-    /* Digital Particles */
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(rgba(255,255,255,0.15) 2px, transparent 2px);
-      background-size: 50px 50px;
-      animation: moveDots 20s linear infinite;
-      z-index: 0;
-    }
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-    @keyframes moveDots {
-      from { background-position: 0 0; }
-      to { background-position: 100px 100px; }
-    }
+  @keyframes moveDots {
+    from { background-position: 0 0; }
+    to { background-position: 100px 100px; }
+  }
 
-    /* Layout Elements */
-    header, nav, main, footer {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 20px;
-    }
+  /* Dark Mode */
+  body.dark {
+    color: #ddd;
+  }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+  /* Header */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  }
+  header h1 {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  header h1:hover {
+    color: #ffe600;
+    transform: scale(1.1);
+  }
+  nav a {
+    color: #ffe600;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  nav a:hover {
+    color: #fff;
+    transform: scale(1.1);
+  }
+  body.dark nav a {
+    color: #ffd700;
+  }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 8px 15px;
-      border-radius: 8px;
-      transition: all 0.3s;
-    }
-    nav a:hover {
-      color: #00e0ff;
-      background: rgba(255, 255, 255, 0.1);
-      text-shadow: 0 0 10px #00e0ff;
-    }
+  /* Mode Toggle */
+  .mode-toggle {
+    background: none;
+    border: none;
+    color: #ffe600;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-left: 20px;
+  }
+  .mode-toggle:hover { transform: scale(1.2); }
+  body.dark .mode-toggle { color: #ffd700; }
 
-    section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+  /* Main Sections */
+  main { padding-top: 90px; max-width: 1200px; margin: 0 auto; }
+  section {
+    margin: 60px 20px;
+    padding: 40px 30px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  section h2 {
+    color: #ffe600;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  }
+  section p { font-size: 1.15rem; line-height: 1.6; color: #eee; max-width: 900px; margin: auto; }
+  body.dark section { background: rgba(30, 30, 30, 0.85); }
 
-    h1, h2 {
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px rgba(0,0,0,0.6);
-    }
+  /* Gallery */
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 25px; max-width: 1100px; margin: auto; }
+  .gallery-item { position: relative; overflow: hidden; border-radius: 12px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.4); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .gallery-item img { width: 100%; height: 180px; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .gallery-item:hover { transform: scale(1.05); box-shadow: 0 12px 25px rgba(0,0,0,0.6); }
 
-    /* Gallery Grid */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
+  /* Modal Fullscreen */
+  .modal { display: none; position: fixed; z-index: 999; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background: rgba(0,0,0,0.9); animation: fadeIn 0.4s; }
+  .modal-content { margin: auto; display: block; width: 80%; max-width: 900px; border-radius: 12px; animation: zoomIn 0.5s; }
+  @keyframes zoomIn { from {transform: scale(0.5);} to {transform: scale(1);} }
+  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+  .close { position: absolute; top: 20px; right: 35px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
+  .close:hover { color: #00e0ff; }
 
-    .gallery-item {
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
+  /* Contact links */
+  #contact a { color: #ffe600; font-size: 1.2rem; margin: 0 12px; text-decoration: none; font-weight: 600; transition: color 0.3s ease, transform 0.3s ease; }
+  #contact a:hover { color: #fff; transform: scale(1.15); }
+  body.dark #contact a { color: #ffd700; }
 
-    .gallery-item img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
+  /* Footer */
+  footer { background: rgba(0,0,0,0.7); text-align:center; color:#fff; padding:18px 10px; font-size:1rem; margin-top:40px; }
+  body.dark footer { background: #222; }
 
-    .gallery-item:hover {
-      transform: scale(1.05);
-    }
+  /* Responsive */
+  @media (max-width: 600px) {
+    section h2 { font-size: 2rem; }
+    section p { font-size: 1rem; }
+    .gallery-item img { height: 150px; }
+  }
 
-    /* Fullscreen Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      padding-top: 60px;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background: rgba(0,0,0,0.9);
-      animation: fadeIn 0.4s;
-    }
-
-    .modal-content {
-      margin: auto;
-      display: block;
-      width: 80%;
-      max-width: 900px;
-      border-radius: 12px;
-      animation: zoomIn 0.5s;
-    }
-
-    @keyframes zoomIn {
-      from {transform: scale(0.5);}
-      to {transform: scale(1);}
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    .close {
-      position: absolute;
-      top: 20px;
-      right: 35px;
-      color: white;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .close:hover {
-      color: #00e0ff;
-    }
-
-    /* Contact Form */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 500px;
-      margin: auto;
-    }
-
-    form input, form textarea {
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      font-size: 16px;
-    }
-
-    form button {
-      background: #00e0ff;
-      color: black;
-      font-weight: bold;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    form button:hover {
-      background: white;
-      color: #00e0ff;
-    }
-
-    /* Responsive Fix */
-    @media (max-width: 768px) {
-      h1 { font-size: 28px; }
-      h2 { font-size: 22px; }
-      nav { flex-direction: column; }
-      .modal-content { width: 95%; }
-    }
-  </style>
+</style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>Sumeet Dhakal</h1>
-    <p>Student | Web Developer | Learner</p>
-  </header>
-
-  <!-- Navigation -->
+<header>
+  <h1>Sumit Dhakal</h1>
   <nav>
     <a href="#about">About Me</a>
     <a href="#gallery">Gallery</a>
     <a href="#contact">Contact</a>
   </nav>
+  <button aria-label="Toggle dark/light mode" class="mode-toggle" id="modeToggle" title="Toggle Dark/Light Mode">🌙</button>
+</header>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I am Sumeet Dhakal, a student of Class 12. I love football ⚽, my favorite player is Cristiano Ronaldo.  
-    I have a helping nature and I am actively involved in social work.  
-    I am also passionate about technology and web development.</p>
+<main>
+  <section id="intro" class="visible">
+    <h2>Web Developer & Student</h2>
+    <p>Building professional web experiences</p>
   </section>
 
-  <!-- Gallery -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I'm Sumit Dhakal from Sainamaina-4, Murgiya Rupandehi. I have completed my Class 12 and am passionate about web development. I enjoy learning new technologies and combining creativity with technical skills to build innovative web solutions. Besides tech, I am involved in social work and believe in positively impacting my community. Feel free to reach out for collaboration or to connect!</p>
+  </section>
+
   <section id="gallery">
     <h2>Gallery</h2>
-    <div class="gallery">
+    <div class="gallery-grid">
       <div class="gallery-item"><img src="hero.jpg" alt="Gallery Photo"></div>
       <div class="gallery-item"><img src="raja.jpg" alt="Gallery Photo"></div>
-      <div class="gallery-item"><img src="pic3.jpg" alt="Gallery Photo"></div>
-      <div class="gallery-item"><img src="pic4.jpg" alt="Gallery Photo"></div>
-      <div class="gallery-item"><img src="pic5.jpg" alt="Gallery Photo"></div>
-      <div class="gallery-item"><img src="pic6.jpg" alt="Gallery Photo"></div>
+      <div class="gallery-item"><img src="Gallary.jpg.jpeg" alt="Gallery Photo"></div>
+      <div class="gallery-item"><img src="Gallary2.jpg.jpeg" alt="Gallery Photo"></div>
+      <div class="gallery-item"><img src="Gallary3.jpg.jpeg" alt="Gallery Photo"></div>
+      <div class="gallery-item"><img src="sumeet.jpg" alt="Gallery Photo"></div>
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact">
-    <h2>Contact Me</h2>
-    <form action="mailto:sumeet@example.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <p style="margin-top:20px;">Or connect with me on:</p>
+    <h2>Contact</h2>
+    <p>Feel free to connect with me on my social media platforms:</p>
     <p>
-      <a href="https://www.facebook.com/sumeet.dhakal.258147" target="_blank">Facebook</a> |
-      <a href="#">Instagram</a> |
-      <a href="#">TikTok</a> |
-      <a href="#">YouTube</a>
+      <a href="https://www.instagram.com/sumeet_1_1" target="_blank">Instagram</a> |
+      <a href="https://www.facebook.com/profile.php?id=100073269189955" target="_blank">Facebook</a> |
+      <a href="https://youtube.com/@sumeet_cr7" target="_blank">YouTube</a> |
+      <a href="https://www.tiktok.com/@sumeet_cr77" target="_blank">TikTok</a>
     </p>
   </section>
+</main>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Sumeet Dhakal. All rights reserved.</p>
-  </footer>
+<footer>
+  &copy; 2025 Sumit Dhakal. All Rights Reserved.
+</footer>
 
-  <!-- Modal (Image Viewer) -->
-  <div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImg">
-  </div>
+<!-- Modal (Gallery Fullscreen) -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
 
-  <script>
-    // Fullscreen Image Modal
-    const modal = document.getElementById("myModal");
-    const modalImg = document.getElementById("modalImg");
-    const closeBtn = document.getElementsByClassName("close")[0];
+<script>
+  // Dark / Light Mode Toggle
+  const modeToggle = document.getElementById('modeToggle');
+  const body = document.body;
+  const savedMode = localStorage.getItem('mode') || 'light';
+  if(savedMode === 'dark') { body.classList.add('dark'); modeToggle.textContent = '☀️'; }
+  else { modeToggle.textContent = '🌙'; }
+  modeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark');
+    if(body.classList.contains('dark')) { modeToggle.textContent='☀️'; localStorage.setItem('mode','dark'); }
+    else { modeToggle.textContent='🌙'; localStorage.setItem('mode','light'); }
+  });
 
-    document.querySelectorAll(".gallery-item img").forEach(img => {
-      img.onclick = function(){
-        modal.style.display = "block";
-        modalImg.src = this.src;
-      }
+  // Animate sections on scroll
+  function revealOnScroll() {
+    document.querySelectorAll('section').forEach(section => {
+      const triggerBottom = window.innerHeight * 0.85;
+      const sectionTop = section.getBoundingClientRect().top;
+      if(sectionTop < triggerBottom) section.classList.add('visible');
     });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
 
-    closeBtn.onclick = function() {
-      modal.style.display = "none";
-    }
+  // Gallery Modal
+  const modal = document.getElementById("myModal");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = document.getElementsByClassName("close")[0];
+  document.querySelectorAll(".gallery-item img").forEach(img => {
+    img.onclick = function(){ modal.style.display="block"; modalImg.src=this.src; }
+  });
+  closeBtn.onclick = () => modal.style.display="none";
+  window.onclick = e => { if(e.target==modal) modal.style.display="none"; }
+</script>
 
-    window.onclick = function(e) {
-      if (e.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
 </body>
 </html>
