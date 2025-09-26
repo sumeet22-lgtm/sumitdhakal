@@ -1,99 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  ...
-  <!-- Use your own photo as favicon -->
-  <link rel="icon" type="image/png" href="sumeet.jpg">
-  ...
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sumeet Dhakal Portfolio</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="myphoto.png">
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      background: radial-gradient(circle at top left, #1a2a6c, #b21f1f, #fdbb2d);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Gradient Animation */
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Digital Particles */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(255,255,255,0.15) 2px, transparent 2px);
+      background-size: 50px 50px;
+      animation: moveDots 20s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes moveDots {
+      from { background-position: 0 0; }
+      to { background-position: 100px 100px; }
+    }
+
+    /* Layout Elements */
+    header, nav, main, footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #00e0ff;
+      text-shadow: 0 0 10px #00e0ff;
+    }
+
+    /* Sections */
+    section {
+      padding: 50px 20px;
+    }
+
+    h1, h2 {
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    /* Gallery Grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+
+    /* Fullscreen Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.9);
+      animation: fadeIn 0.4s;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 900px;
+      border-radius: 12px;
+      animation: zoomIn 0.5s;
+    }
+
+    @keyframes zoomIn {
+      from {transform: scale(0.5);}
+      to {transform: scale(1);}
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #00e0ff;
+    }
+  </style>
 </head>
+<body>
 
-<style>
-  /* Gallery (removed captions) */
-  .gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .gallery-item img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-  .gallery-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.6);
-  }
-  .gallery-item:hover img {
-    transform: scale(1.1);
-  }
+  <!-- Header -->
+  <header>
+    <h1>Sumeet Dhakal</h1>
+    <p>Student | Web Developer | Learner</p>
+  </header>
 
-  /* Lightbox Modal */
-  .lightbox {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9);
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 0.5s ease;
-  }
-  .lightbox img {
-    max-width: 90%;
-    max-height: 85%;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.3);
-    animation: zoomIn 0.5s ease;
-  }
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-  @keyframes zoomIn {
-    from {transform: scale(0.8);}
-    to {transform: scale(1);}
-  }
-  .lightbox:target {
-    display: flex;
-  }
-</style>
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<main>
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I am Sumeet Dhakal, a student of Class 12. I love football ⚽, my favorite player is Cristiano Ronaldo.  
+    I have a helping nature and I am actively involved in social work.  
+    I am also passionate about technology and web development.</p>
+  </section>
+
+  <!-- Gallery -->
   <section id="gallery">
     <h2>Gallery</h2>
-    <div class="gallery-grid">
-      <a href="#img1" class="gallery-item"><img src="Gallary.jpg.jpeg" alt="Photo"></a>
-      <a href="#img2" class="gallery-item"><img src="Gallary2.jpg.jpeg" alt="Photo"></a>
-      <a href="#img3" class="gallery-item"><img src="Gallary3.jpg.jpeg" alt="Photo"></a>
-      <a href="#img4" class="gallery-item"><img src="hero.jpg" alt="Photo"></a>
-      <a href="#img5" class="gallery-item"><img src="sumeet.jpg" alt="Photo"></a>
-      <a href="#img6" class="gallery-item"><img src="raja.jpg" alt="Photo"></a>
+    <div class="gallery">
+      <div class="gallery-item"><img src="hero.jpg" alt="Gallery Photo"></div>
+      <div class="gallery-item"><img src="raja.jpg" alt="Gallery Photo"></div>
+      <div class="gallery-item"><img src="pic3.jpg" alt="Gallery Photo"></div>
+      <div class="gallery-item"><img src="pic4.jpg" alt="Gallery Photo"></div>
     </div>
   </section>
-</main>
 
-<!-- Lightbox Full View -->
-<div id="img1" class="lightbox">
-  <a href="#"><img src="Gallary.jpg.jpeg" alt="Full Photo"></a>
-</div>
-<div id="img2" class="lightbox">
-  <a href="#"><img src="Gallary2.jpg.jpeg" alt="Full Photo"></a>
-</div>
-<div id="img3" class="lightbox">
-  <a href="#"><img src="Gallary3.jpg.jpeg" alt="Full Photo"></a>
-</div>
-<div id="img4" class="lightbox">
-  <a href="#"><img src="hero.jpg" alt="Full Photo"></a>
-</div>
-<div id="img5" class="lightbox">
-  <a href="#"><img src="sumeet.jpg" alt="Full Photo"></a>
-</div>
-<div id="img6" class="lightbox">
-  <a href="#"><img src="raja.jpg" alt="Full Photo"></a>
-</div>
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Connect with me on social media:</p>
+    <p>
+      <a href="https://www.facebook.com/sumeet.dhakal.258147" target="_blank">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">TikTok</a> |
+      <a href="#">YouTube</a>
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Sumeet Dhakal. All rights reserved.</p>
+  </footer>
+
+  <!-- Modal (Image Viewer) -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <script>
+    // Fullscreen Image Modal
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("modalImg");
+    const closeBtn = document.getElementsByClassName("close")[0];
+
+    document.querySelectorAll(".gallery-item img").forEach(img => {
+      img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+      }
+    });
+
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(e) {
+      if (e.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
