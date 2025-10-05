@@ -10,10 +10,19 @@
 <style>
   /* Reset & Basics */
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:'Roboto',sans-serif; color:#fff; overflow-x:hidden; position:relative; }
+  body { font-family:'Roboto',sans-serif; color:#fff; overflow-x:hidden; position:relative; background:#0a0a0a; }
+
+  /* Dark Mode */
+  body.dark { background:#f5f5f5; color:#111; }
+  body.dark section { background:rgba(255,255,255,0.9); color:#222; }
+  body.dark section h2 { color:#0077ff; text-shadow:none; }
+  body.dark header { background:rgba(255,255,255,0.85); }
+  body.dark nav a { color:#0077ff; }
+  body.dark #contact a { color:#0077ff; }
+  body.dark .gpa-badge { background: linear-gradient(45deg, #0077ff, #0044aa); }
 
   /* Digitalized Background */
-  #digital-bg { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; background:#0a0a0a; }
+  #digital-bg { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
   canvas { display:block; }
 
   /* Header */
@@ -22,6 +31,7 @@
     background:rgba(0,0,0,0.65);
     display:flex; justify-content: space-between; align-items:center;
     padding:15px 25px; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
   }
   header h1 { font-family:'Open Sans',sans-serif; font-weight:700; cursor:pointer; transition:0.3s; }
   header h1:hover { color:#00f0ff; transform:scale(1.1); }
@@ -33,8 +43,26 @@
   main { padding-top:90px; max-width:1200px; margin:0 auto; }
   section { margin:60px 20px; padding:40px 30px; background:rgba(0,0,0,0.6); border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.3); opacity:0; transform:translateY(30px); transition:opacity 0.6s ease, transform 0.6s ease; }
   section.visible { opacity:1; transform:translateY(0); }
-  section h2 { color:#00f0ff; font-size:2.8rem; font-weight:700; margin-bottom:25px; text-transform:uppercase; text-shadow:0 0 10px rgba(0,255,255,0.7); }
+  section h2 { color:#00f0ff; font-size:2.5rem; font-weight:700; margin-bottom:25px; text-transform:uppercase; text-shadow:0 0 10px rgba(0,255,255,0.7); }
   section p { font-size:1.15rem; line-height:1.6; color:#eee; max-width:900px; margin:auto; }
+
+  /* GPA Badge */
+  .gpa-badge {
+    display:inline-block;
+    background: linear-gradient(45deg, #00f0ff, #0077ff);
+    color:#fff;
+    font-weight:700;
+    padding:4px 10px;
+    border-radius:8px;
+    box-shadow:0 0 12px rgba(0,240,255,0.8);
+    font-size:1rem;
+    animation: glowPulse 2s infinite;
+  }
+  @keyframes glowPulse {
+    0% { box-shadow: 0 0 10px rgba(0,240,255,0.6); }
+    50% { box-shadow: 0 0 25px rgba(0,240,255,1); }
+    100% { box-shadow: 0 0 10px rgba(0,240,255,0.6); }
+  }
 
   /* Gallery */
   .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:25px; max-width:1100px; margin:auto; }
@@ -48,6 +76,14 @@
   @keyframes zoomIn { from {transform:scale(0.5);} to {transform:scale(1);} }
   .close { position:absolute; top:20px; right:35px; color:white; font-size:40px; font-weight:bold; cursor:pointer; }
   .close:hover { color:#00f0ff; }
+  .nav-btn {
+    position:absolute; top:50%; transform:translateY(-50%);
+    background:rgba(0,0,0,0.5); color:#fff; border:none; font-size:2rem;
+    padding:10px 18px; cursor:pointer; border-radius:8px; transition:0.3s;
+  }
+  .nav-btn:hover { background:#00f0ff; color:#000; }
+  .prev { left:20px; }
+  .next { right:20px; }
 
   /* Contact links */
   #contact a { color:#00f0ff; font-size:1.2rem; margin:0 12px; text-decoration:none; font-weight:600; transition:0.3s; }
@@ -87,7 +123,13 @@
 
   <section id="about">
     <h2>About Me</h2>
-    <p>Hello! I'm Sumit Dhakal from Sainamaina-4, Murgiya Rupandehi. I have completed my Class 12 and am passionate about web development. I enjoy learning new technologies and combining creativity with technical skills to build innovative web solutions. Besides tech, I am involved in social work and believe in positively impacting my community. Feel free to reach out for collaboration or to connect!</p>
+    <p>Hello! I'm Sumit Dhakal from Sainamaina-4, Murgiya Rupandehi.  
+    I completed my higher secondary education from <b>Prabhat English Boarding School</b>, Sainamaina-4, Murgiya, with an outstanding 
+    <span class="gpa-badge">GPA: 3.80</span> in Class 12.  
+    Currently, I am pursuing <b>BBA-F</b> at <b>Axis College, Butwal</b>.  
+    I am passionate about web development, learning new technologies, and combining creativity with technical skills to build innovative web solutions.  
+    Besides tech, I am involved in social work and believe in positively impacting my community.  
+    Feel free to reach out for collaboration or to connect!</p>
   </section>
 
   <section id="gallery">
@@ -95,9 +137,9 @@
     <div class="gallery-grid">
       <div class="gallery-item"><img src="hero.jpg" alt="Gallery Photo"></div>
       <div class="gallery-item"><img src="raja.jpg" alt="Gallery Photo"></div>
-      <div class="gallery-item"><img src="Gallary.jpg.jpeg" alt="Gallery Photo"></div>
-      <div class="gallery-item"><img src="Gallary2.jpg.jpeg" alt="Gallery Photo"></div>
-      <div class="gallery-item"><img src="Gallary3.jpg.jpeg" alt="Gallery Photo"></div>
+      <div class="gallery-item"><img src="gallery1.jpg" alt="Gallery Photo"></div>
+      <div class="gallery-item"><img src="gallery2.jpg" alt="Gallery Photo"></div>
+      <div class="gallery-item"><img src="gallery3.jpg" alt="Gallery Photo"></div>
       <div class="gallery-item"><img src="sumeet.jpg" alt="Gallery Photo"></div>
     </div>
   </section>
@@ -121,7 +163,9 @@
 <!-- Modal (Gallery Fullscreen) -->
 <div id="myModal" class="modal">
   <span class="close">&times;</span>
+  <button class="nav-btn prev">&#10094;</button>
   <img class="modal-content" id="modalImg">
+  <button class="nav-btn next">&#10095;</button>
 </div>
 
 <script>
@@ -149,14 +193,26 @@
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
 
-  // Gallery Modal
+  // Gallery Modal with navigation
   const modal=document.getElementById("myModal");
   const modalImg=document.getElementById("modalImg");
   const closeBtn=document.getElementsByClassName("close")[0];
-  document.querySelectorAll(".gallery-item img").forEach(img=>{
-    img.onclick=function(){ modal.style.display="block"; modalImg.src=this.src; }
+  const prevBtn=document.querySelector(".prev");
+  const nextBtn=document.querySelector(".next");
+  const images=[...document.querySelectorAll(".gallery-item img")];
+  let currentIndex=0;
+
+  function openModal(index){
+    currentIndex=index;
+    modal.style.display="block";
+    modalImg.src=images[index].src;
+  }
+  images.forEach((img,i)=>{
+    img.onclick=()=>openModal(i);
   });
   closeBtn.onclick=()=>modal.style.display="none";
+  prevBtn.onclick=()=>{ currentIndex=(currentIndex-1+images.length)%images.length; modalImg.src=images[currentIndex].src; }
+  nextBtn.onclick=()=>{ currentIndex=(currentIndex+1)%images.length; modalImg.src=images[currentIndex].src; }
   window.onclick=e=>{ if(e.target==modal) modal.style.display="none"; }
 
   // Digital Background Canvas
