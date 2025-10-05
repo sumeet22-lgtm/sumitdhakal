@@ -152,3 +152,109 @@
       <a href="https://www.tiktok.com/@sumeet_cr77" target="_blank">TikTok</a>
     </p>
   </section>
+</main>
+
+<footer>
+  &copy; 2025 Sumit Dhakal. All Rights Reserved.
+</footer>
+
+<!-- Modal (Gallery Fullscreen) -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <button class="nav-btn prev">&#10094;</button>
+  <img class="modal-content" id="modalImg">
+  <button class="nav-btn next">&#10095;</button>
+</div>
+
+<script>
+  // Dark / Light Mode
+  const modeToggle=document.getElementById('modeToggle');
+  const body=document.body;
+  const savedMode=localStorage.getItem('mode')||'light';
+  if(savedMode==='dark'){ body.classList.add('dark'); modeToggle.textContent='☀️'; } 
+  else{ modeToggle.textContent='🌙'; }
+  modeToggle.addEventListener('click', ()=>{
+    body.classList.toggle('dark');
+    if(body.classList.contains('dark')) modeToggle.textContent='☀️'; 
+    else modeToggle.textContent='🌙';
+    localStorage.setItem('mode', body.classList.contains('dark')?'dark':'light');
+  });
+
+  // Reveal on scroll
+  function revealOnScroll(){
+    document.querySelectorAll('section').forEach(section=>{
+      const triggerBottom=window.innerHeight*0.85;
+      const sectionTop=section.getBoundingClientRect().top;
+      if(sectionTop<triggerBottom) section.classList.add('visible');
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+
+  // Gallery Modal with navigation
+  const modal=document.getElementById("myModal");
+  const modalImg=document.getElementById("modalImg");
+  const closeBtn=document.getElementsByClassName("close")[0];
+  const prevBtn=document.querySelector(".prev");
+  const nextBtn=document.querySelector(".next");
+  const images=[...document.querySelectorAll(".gallery-item img")];
+  let currentIndex=0;
+
+  function openModal(index){
+    currentIndex=index;
+    modal.style.display="block";
+    modalImg.src=images[index].src;
+  }
+  images.forEach((img,i)=>{
+    img.onclick=()=>openModal(i);
+  });
+  closeBtn.onclick=()=>modal.style.display="none";
+  prevBtn.onclick=()=>{ currentIndex=(currentIndex-1+images.length)%images.length; modalImg.src=images[currentIndex].src; }
+  nextBtn.onclick=()=>{ currentIndex=(currentIndex+1)%images.length; modalImg.src=images[currentIndex].src; }
+  window.onclick=e=>{ if(e.target==modal) modal.style.display="none"; }
+
+  // Digital Background Canvas
+  const canvas=document.getElementById('bgCanvas');
+  const ctx=canvas.getContext('2d');
+  let width=canvas.width=window.innerWidth;
+  let height=canvas.height=window.innerHeight;
+  const particles=[];
+  const particleCount=150;
+
+  class Particle{
+    constructor(){ this.x=Math.random()*width; this.y=Math.random()*height; this.vx=(Math.random()-0.5)*0.5; this.vy=(Math.random()-0.5)*0.5; this.size=Math.random()*2+1; }
+    update(){ this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>width)this.vx*=-1; if(this.y<0||this.y>height)this.vy*=-1; }
+    draw(){ ctx.fillStyle='rgba(0,255,255,0.7)'; ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill(); }
+  }
+
+  for(let i=0;i<particleCount;i++) particles.push(new Particle());
+
+  function animate(){
+    ctx.clearRect(0,0,width,height);
+    particles.forEach(p=>{ p.update(); p.draw(); });
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        let dx=particles[i].x-particles[j].x;
+        let dy=particles[i].y-particles[j].y;
+        let dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<120){
+          ctx.strokeStyle='rgba(0,255,255,'+(1-dist/120)+')';
+          ctx.lineWidth=1;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x,particles[i].y);
+          ctx.lineTo(particles[j].x,particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+  window.addEventListener('resize', ()=>{
+    width=canvas.width=window.innerWidth;
+    height=canvas.height=window.innerHeight;
+  });
+</script>
+
+</body>
+</html>
