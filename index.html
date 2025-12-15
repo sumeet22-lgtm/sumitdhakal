@@ -10,11 +10,12 @@
 <style>
 /* Reset & Basics */
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Roboto',sans-serif; color:#fff; overflow-x:hidden; position:relative; background:#0a0a0a; transition: background 0.5s, color 0.5s; }
+body { font-family:'Roboto',sans-serif; color:#eee; overflow-x:hidden; position:relative; background:#0a0a0a; transition: background 0.5s, color 0.5s; }
 
-/* Dark Mode */
+/* Dark/Light Mode */
 body.dark { background:#f5f5f5; color:#111; }
 body.dark nav a, body.dark #contact a { color:#0077ff; }
+body:not(.dark) nav a, body:not(.dark) #contact a { color:#00f0ff; }
 
 /* Header */
 header {
@@ -22,15 +23,14 @@ header {
   background:rgba(0,0,0,0.65);
   display:flex; justify-content: space-between; align-items:center;
   padding:15px 25px; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.6);
-  backdrop-filter: blur(8px);
-  transition: background 0.5s;
+  backdrop-filter: blur(8px); transition: background 0.5s;
 }
 body.dark header { background:rgba(255,255,255,0.85); }
 header h1 { font-family:'Open Sans',sans-serif; font-weight:700; cursor:pointer; transition:0.3s; }
 header h1:hover { color:#00f0ff; transform:scale(1.1); }
-nav a { color:#00f0ff; text-decoration:none; margin-left:20px; font-weight:600; transition:0.3s; }
-nav a:hover { color:#fff; transform:scale(1.1); }
-.mode-toggle { background:none; border:none; color:#00f0ff; font-size:1.8rem; cursor:pointer; margin-left:20px; }
+nav a { text-decoration:none; margin-left:20px; font-weight:600; transition:0.3s; }
+nav a:hover { transform:scale(1.1); color:#fff; }
+.mode-toggle { background:none; border:none; font-size:1.8rem; cursor:pointer; margin-left:20px; }
 
 /* Main Sections */
 main { padding-top:90px; max-width:1200px; margin:0 auto; }
@@ -38,10 +38,9 @@ section {
   margin:60px 20px; padding:40px 30px;
   border-radius:12px; overflow:hidden; position:relative;
   opacity:0; transform:translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;
-  color:#eee;
 }
 
-/* Animated Gradient Background for Sections */
+/* Animated Gradient Background */
 .animated-bg::before {
   content: "";
   position: absolute;
@@ -51,7 +50,7 @@ section {
   background-size: 400% 400%;
   z-index: -1;
   animation: gradientMove 15s ease infinite;
-  opacity: 0.15;
+  opacity: 0.12;
   border-radius: 12px;
 }
 @keyframes gradientMove {
@@ -60,7 +59,7 @@ section {
   100% { background-position: 0% 50%; }
 }
 
-/* Section Headings */
+/* Section Text */
 section h2 { font-size:2.5rem; font-weight:700; margin-bottom:25px; text-transform:uppercase; }
 section p, section li { font-size:1.15rem; line-height:1.6; margin-bottom:10px; }
 section ul { padding-left:20px; list-style-type: disc; }
@@ -72,8 +71,8 @@ section ul { padding-left:20px; list-style-type: disc; }
 .gallery-item:hover { transform:scale(1.05); box-shadow:0 12px 25px rgba(0,0,0,0.6); }
 
 /* Contact Links */
-#contact a { color:#00f0ff; font-size:1.2rem; margin:0 12px; text-decoration:none; font-weight:600; transition:0.3s; }
-#contact a:hover { color:#fff; transform:scale(1.15); }
+#contact a { font-size:1.2rem; margin:0 12px; text-decoration:none; font-weight:600; transition:0.3s; }
+#contact a:hover { transform:scale(1.15); color:#fff; }
 
 /* Footer */
 footer { background: rgba(0,0,0,0.7); text-align:center; color:#fff; padding:18px 10px; font-size:1rem; margin-top:40px; }
@@ -125,9 +124,8 @@ footer { background: rgba(0,0,0,0.7); text-align:center; color:#fff; padding:18p
     <h2>About Me</h2>
     <p>
       Hello! I'm Sumit Dhakal from Sainamaina-4, Murgiya Rupandehi.  
-      I completed my higher secondary education from <b>Prabhat English Boarding School</b>, Sainamaina-4, Murgiya, with a <b>GPA: 3.80</b> in Class 12.  
-      Currently, I am pursuing <b>BBA-F</b> at <b>Axis College, Butwal</b>, and I am also a management student.  
-      As a management student, I focus on developing leadership skills, effective communication, organization, teamwork, problem-solving, and decision-making abilities.  
+      I completed my higher secondary education from <b>Prabhat English Boarding School</b> with a <b>GPA: 3.80</b> in Class 12.  
+      Currently, I am pursuing <b>BBA-F</b> at <b>Axis College, Butwal</b>.  
       I am passionate about web development, learning new technologies, and combining creativity with technical skills to build innovative web solutions.  
       Besides tech, I am involved in social work and believe in positively impacting my community.
     </p>
@@ -136,18 +134,13 @@ footer { background: rgba(0,0,0,0.7); text-align:center; color:#fff; padding:18p
   <!-- Social & Leadership Activities -->
   <section id="social-leadership" class="animated-bg">
     <h2>Social & Leadership Activities (2024/25)</h2>
-    <p>
-      I am a regular blood donor and volunteer in various public events.  
-      In my school, I served as:
-    </p>
+    <p>I am a regular blood donor and volunteer in various public events. In my school, I served as:</p>
     <ul>
       <li>President of the Robotics & Science Club, <b>Prabhat English Boarding School</b></li>
       <li>Vice-Treasurer of the <b>Red Cross Society, Prabhat English Boarding School</b></li>
       <li>Manager of the school cricket team, <b>Prabhat English Boarding School</b></li>
     </ul>
-    <p>
-      These experiences helped me develop leadership, teamwork, management, and organizational skills while contributing positively to my community.
-    </p>
+    <p>These experiences helped me develop leadership, teamwork, management, and organizational skills while contributing positively to my community.</p>
   </section>
 
   <!-- Achievements Gallery -->
@@ -188,7 +181,7 @@ footer { background: rgba(0,0,0,0.7); text-align:center; color:#fff; padding:18p
   &copy; 2025 Sumit Dhakal. All Rights Reserved.
 </footer>
 
-<!-- Modal for Achievements -->
+<!-- Modal -->
 <div id="myModal" class="modal">
   <span class="close">&times;</span>
   <button class="nav-btn prev">&#10094;</button>
@@ -198,9 +191,9 @@ footer { background: rgba(0,0,0,0.7); text-align:center; color:#fff; padding:18p
 
 <script>
 // Dark / Light Mode
-const modeToggle=document.getElementById('modeToggle');
-const body=document.body;
-const savedMode=localStorage.getItem('mode')||'light';
+const modeToggle = document.getElementById('modeToggle');
+const body = document.body;
+const savedMode = localStorage.getItem('mode') || 'light';
 if(savedMode==='dark'){ body.classList.add('dark'); modeToggle.textContent='☀️'; } 
 else{ modeToggle.textContent='🌙'; }
 modeToggle.addEventListener('click', ()=>{
