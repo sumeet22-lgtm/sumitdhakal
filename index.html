@@ -10,8 +10,11 @@
 <style>
 /* Reset & Basics */
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Roboto',sans-serif; color:#eee; overflow-x:hidden; background:#0a0a0a; transition: background 0.5s, color 0.5s; }
+body { font-family:'Roboto',sans-serif; color:#fff; overflow-x:hidden; background:#0a0a0a; transition: background 0.5s, color 0.5s; }
+
+/* Dark Mode */
 body.dark { background:#f5f5f5; color:#111; }
+body.dark nav a, body.dark #contact a { color:#0077ff; }
 
 /* Header */
 header {
@@ -25,41 +28,27 @@ body.dark header { background:rgba(255,255,255,0.85); }
 header h1 { font-family:'Open Sans',sans-serif; font-weight:700; cursor:pointer; transition:0.3s; }
 header h1:hover { color:#00f0ff; transform:scale(1.1); }
 nav a { color:#00f0ff; text-decoration:none; margin-left:20px; font-weight:600; transition:0.3s; }
-body.dark nav a { color:#0077ff; }
 nav a:hover { color:#fff; transform:scale(1.1); }
 .mode-toggle { background:none; border:none; color:#00f0ff; font-size:1.8rem; cursor:pointer; margin-left:20px; }
 
+/* Background Animation Layer */
+#bgCanvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
+
 /* Main Sections */
-main { padding-top:90px; max-width:1200px; margin:0 auto; }
+main { padding-top:90px; max-width:1200px; margin:0 auto; position:relative; z-index:1; }
 section {
   position:relative;
   margin:60px 20px; padding:40px 30px;
   border-radius:12px; overflow:hidden;
+  background:rgba(0,0,0,0.6);
+  transition: background 0.5s, color 0.5s;
   opacity:0; transform:translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;
-  z-index:0;
 }
-
-/* Animated Gradient Background */
-.animated-bg::before {
-  content:"";
-  position:absolute; top:-50%; left:-50%;
-  width:200%; height:200%;
-  background: linear-gradient(120deg, #00f0ff, #0077ff, #00ff7f, #00f0ff);
-  background-size:400% 400%;
-  z-index:-1;
-  animation: gradientMove 15s ease infinite;
-  opacity:0.1;
-  border-radius:12px;
-}
-@keyframes gradientMove {
-  0% { background-position:0% 50%; }
-  50% { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
+body.dark section { background:rgba(255,255,255,0.9); color:#111; }
 
 /* Section Headings & Text */
-section h2 { font-size:2.5rem; font-weight:700; margin-bottom:25px; text-transform:uppercase; color:inherit; }
-section p, section li { font-size:1.15rem; line-height:1.6; margin-bottom:10px; color:inherit; }
+section h2 { font-size:2.5rem; font-weight:700; margin-bottom:25px; text-transform:uppercase; }
+section p, section li { font-size:1.15rem; line-height:1.6; margin-bottom:10px; }
 section ul { padding-left:20px; list-style-type: disc; }
 
 /* Gallery */
@@ -70,7 +59,6 @@ section ul { padding-left:20px; list-style-type: disc; }
 
 /* Contact Links */
 #contact a { color:#00f0ff; font-size:1.2rem; margin:0 12px; text-decoration:none; font-weight:600; transition:0.3s; }
-body.dark #contact a { color:#0077ff; }
 #contact a:hover { color:#fff; transform:scale(1.15); }
 
 /* Footer */
@@ -96,6 +84,9 @@ footer { background: rgba(0,0,0,0.7); text-align:center; color:#fff; padding:18p
 </head>
 <body>
 
+<!-- Canvas for background animation -->
+<canvas id="bgCanvas"></canvas>
+
 <header>
   <h1>Sumit Dhakal</h1>
   <nav>
@@ -108,27 +99,23 @@ footer { background: rgba(0,0,0,0.7); text-align:center; color:#fff; padding:18p
 </header>
 
 <main>
-  <!-- Intro -->
-  <section id="intro" class="animated-bg visible">
+  <section id="intro" class="visible">
     <h2>Web Developer & Student</h2>
     <p>Building professional web experiences</p>
   </section>
 
-  <!-- About Me -->
-  <section id="about" class="animated-bg">
+  <section id="about">
     <h2>About Me</h2>
     <p>
       Hello! I'm Sumit Dhakal from Sainamaina-4, Murgiya Rupandehi.  
-      I completed my higher secondary education from <b>Prabhat English Boarding School</b>, Sainamaina-4, Murgiya, with a <b>GPA: 3.80</b> in Class 12.  
+      I completed my higher secondary education from <b>Prabhat English Boarding School</b> with a GPA: 3.80.  
       Currently, I am pursuing <b>BBA-F</b> at <b>Axis College, Butwal</b>.  
-      I focus on leadership, communication, teamwork, problem-solving, and decision-making skills.  
-      I am passionate about web development, learning new technologies, and combining creativity with technical skills to build innovative web solutions.  
-      I am also involved in social work and positively contributing to my community.
+      I focus on leadership, communication, teamwork, problem-solving, and decision-making.  
+      I am passionate about web development and positively contributing to my community.
     </p>
   </section>
 
-  <!-- Social & Leadership Activities -->
-  <section id="social-leadership" class="animated-bg">
+  <section id="social-leadership">
     <h2>Social & Leadership Activities (2024/25)</h2>
     <p>I am a regular blood donor and volunteer in various public events. In my school, I served as:</p>
     <ul>
@@ -136,11 +123,9 @@ footer { background: rgba(0,0,0,0.7); text-align:center; color:#fff; padding:18p
       <li>Vice-Treasurer of the <b>Red Cross Society, Prabhat English Boarding School</b></li>
       <li>Manager of the school cricket team, <b>Prabhat English Boarding School</b></li>
     </ul>
-    <p>These experiences helped me develop leadership, teamwork, management, and organizational skills while contributing positively to my community.</p>
   </section>
 
-  <!-- Achievements Gallery -->
-  <section id="achievements" class="animated-bg">
+  <section id="achievements">
     <h2>Achievements & Activities</h2>
     <div class="gallery-grid">
       <div class="gallery-item"><img src="item1.jpg" alt="Achievement 1"></div>
@@ -160,8 +145,7 @@ footer { background: rgba(0,0,0,0.7); text-align:center; color:#fff; padding:18p
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="animated-bg">
+  <section id="contact">
     <h2>Contact</h2>
     <p>Connect with me on social media:</p>
     <p>
@@ -188,7 +172,6 @@ footer { background: rgba(0,0,0,0.7); text-align:center; color:#fff; padding:18p
 <script>
 // Dark / Light Mode
 const modeToggle = document.getElementById('modeToggle');
-const body = document.body;
 const savedMode = localStorage.getItem('mode') || 'light';
 if(savedMode === 'dark'){ body.classList.add('dark'); modeToggle.textContent='☀️'; } 
 else{ modeToggle.textContent='🌙'; }
@@ -203,7 +186,8 @@ function revealOnScroll(){
   document.querySelectorAll('section').forEach(section=>{
     const triggerBottom = window.innerHeight * 0.85;
     const sectionTop = section.getBoundingClientRect().top;
-    if(sectionTop < triggerBottom) section.classList.add('visible');
+    if(sectionTop < triggerBottom) section.style.opacity = 1;
+    if(sectionTop < triggerBottom) section.style.transform = 'translateY(0)';
   });
 }
 window.addEventListener('scroll', revealOnScroll);
@@ -234,6 +218,63 @@ nextBtn.addEventListener('click', ()=>{
   modalImg.src = galleryImages[currentIndex].src;
 });
 window.addEventListener('click', e=>{ if(e.target==modal) modal.style.display="none"; });
+
+// Background Animation
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+const particles = [];
+const particleCount = 150;
+
+class Particle {
+  constructor() {
+    this.x = Math.random()*width;
+    this.y = Math.random()*height;
+    this.vx = (Math.random()-0.5)*0.5;
+    this.vy = (Math.random()-0.5)*0.5;
+    this.size = Math.random()*2+1;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if(this.x<0 || this.x>width) this.vx*=-1;
+    if(this.y<0 || this.y>height) this.vy*=-1;
+  }
+  draw() {
+    ctx.fillStyle='rgba(0,240,255,0.7)';
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+for(let i=0;i<particleCount;i++) particles.push(new Particle());
+
+function animate(){
+  ctx.clearRect(0,0,width,height);
+  particles.forEach(p=>{ p.update(); p.draw(); });
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      let dx = particles[i].x - particles[j].x;
+      let dy = particles[i].y - particles[j].y;
+      let dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist<120){
+        ctx.strokeStyle='rgba(0,240,255,'+(1-dist/120)+')';
+        ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x,particles[i].y);
+        ctx.lineTo(particles[j].x,particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+window.addEventListener('resize', ()=>{
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+});
 </script>
 
 </body>
