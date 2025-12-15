@@ -1,6 +1,127 @@
-<!-- About Me -->
-<section id="about">
-  <div class="animated-bg">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sumit Dhakal - Web Developer & Student</title>
+<link rel="icon" href="myphoto.png" type="image/png" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+
+<style>
+/* Reset & Basics */
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Roboto',sans-serif; color:#fff; overflow-x:hidden; position:relative; background:#0a0a0a; transition: background 0.5s, color 0.5s; }
+
+/* Dark Mode */
+body.dark { background:#f5f5f5; color:#111; }
+body.dark nav a, body.dark #contact a { color:#0077ff; }
+
+/* Header */
+header {
+  position:fixed; top:0; width:100%;
+  background:rgba(0,0,0,0.65);
+  display:flex; justify-content: space-between; align-items:center;
+  padding:15px 25px; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  transition: background 0.5s;
+}
+body.dark header { background:rgba(255,255,255,0.85); }
+header h1 { font-family:'Open Sans',sans-serif; font-weight:700; cursor:pointer; transition:0.3s; }
+header h1:hover { color:#00f0ff; transform:scale(1.1); }
+nav a { color:#00f0ff; text-decoration:none; margin-left:20px; font-weight:600; transition:0.3s; }
+nav a:hover { color:#fff; transform:scale(1.1); }
+.mode-toggle { background:none; border:none; color:#00f0ff; font-size:1.8rem; cursor:pointer; margin-left:20px; }
+
+/* Main Sections */
+main { padding-top:90px; max-width:1200px; margin:0 auto; }
+section {
+  margin:60px 20px; padding:40px 30px;
+  border-radius:12px; overflow:hidden; position:relative;
+  opacity:0; transform:translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;
+  color:#eee;
+}
+
+/* Animated Gradient Background for Sections */
+.animated-bg::before {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(120deg, #00f0ff, #0077ff, #00ff7f, #00f0ff);
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: gradientMove 15s ease infinite;
+  opacity: 0.15;
+  border-radius: 12px;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Section Headings */
+section h2 { font-size:2.5rem; font-weight:700; margin-bottom:25px; text-transform:uppercase; }
+section p, section li { font-size:1.15rem; line-height:1.6; margin-bottom:10px; }
+section ul { padding-left:20px; list-style-type: disc; }
+
+/* Gallery */
+.gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:25px; max-width:1100px; margin:auto; }
+.gallery-item { position:relative; overflow:hidden; border-radius:12px; cursor:pointer; box-shadow:0 5px 15px rgba(0,0,0,0.4); transition:0.3s; }
+.gallery-item img { width:100%; height:180px; object-fit:cover; transition:0.4s; }
+.gallery-item:hover { transform:scale(1.05); box-shadow:0 12px 25px rgba(0,0,0,0.6); }
+
+/* Contact Links */
+#contact a { color:#00f0ff; font-size:1.2rem; margin:0 12px; text-decoration:none; font-weight:600; transition:0.3s; }
+#contact a:hover { color:#fff; transform:scale(1.15); }
+
+/* Footer */
+footer { background: rgba(0,0,0,0.7); text-align:center; color:#fff; padding:18px 10px; font-size:1rem; margin-top:40px; }
+
+/* Modal Fullscreen */
+.modal { display:none; position:fixed; z-index:999; padding-top:60px; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.95); }
+.modal-content { margin:auto; display:block; width:80%; max-width:900px; border-radius:12px; }
+.close { position:absolute; top:20px; right:35px; color:white; font-size:40px; font-weight:bold; cursor:pointer; }
+.close:hover { color:#00f0ff; }
+.nav-btn {
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:rgba(0,0,0,0.5); color:#fff; border:none; font-size:2rem;
+  padding:10px 18px; cursor:pointer; border-radius:8px; transition:0.3s;
+}
+.nav-btn:hover { background:#00f0ff; color:#000; }
+.prev { left:20px; }
+.next { right:20px; }
+
+/* Responsive */
+@media(max-width:600px){
+  section h2 { font-size:2rem; }
+  section p, section li { font-size:1rem; }
+  .gallery-item img { height:150px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Sumit Dhakal</h1>
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#social-leadership">Activities</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="mode-toggle" id="modeToggle">🌙</button>
+</header>
+
+<main>
+  <!-- Intro -->
+  <section id="intro" class="animated-bg visible">
+    <h2>Web Developer & Student</h2>
+    <p>Building professional web experiences</p>
+  </section>
+
+  <!-- About Me -->
+  <section id="about" class="animated-bg">
     <h2>About Me</h2>
     <p>
       Hello! I'm Sumit Dhakal from Sainamaina-4, Murgiya Rupandehi.  
@@ -10,12 +131,10 @@
       I am passionate about web development, learning new technologies, and combining creativity with technical skills to build innovative web solutions.  
       Besides tech, I am involved in social work and believe in positively impacting my community.
     </p>
-  </div>
-</section>
+  </section>
 
-<!-- Social & Leadership Activities -->
-<section id="social-leadership">
-  <div class="animated-bg">
+  <!-- Social & Leadership Activities -->
+  <section id="social-leadership" class="animated-bg">
     <h2>Social & Leadership Activities (2024/25)</h2>
     <p>
       I am a regular blood donor and volunteer in various public events.  
@@ -29,56 +148,68 @@
     <p>
       These experiences helped me develop leadership, teamwork, management, and organizational skills while contributing positively to my community.
     </p>
-  </div>
-</section>
+  </section>
 
-<style>
-/* Background animation wrapper */
-.animated-bg {
-  position: relative;
-  padding: 30px 20px;
-  border-radius: 12px;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.6);
-  color: #eee;
-  transition: background 0.5s, color 0.5s;
-}
+  <!-- Achievements Gallery -->
+  <section id="achievements" class="animated-bg">
+    <h2>Achievements & Activities</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="item1.jpg" alt="Achievement 1"></div>
+      <div class="gallery-item"><img src="item2.jpg" alt="Achievement 2"></div>
+      <div class="gallery-item"><img src="item3.jpg" alt="Achievement 3"></div>
+      <div class="gallery-item"><img src="item4.jpg" alt="Achievement 4"></div>
+      <div class="gallery-item"><img src="item5.jpg" alt="Achievement 5"></div>
+      <div class="gallery-item"><img src="item6.jpg" alt="Achievement 6"></div>
+      <div class="gallery-item"><img src="item7.jpg" alt="Achievement 7"></div>
+      <div class="gallery-item"><img src="item8.jpg" alt="Achievement 8"></div>
+      <div class="gallery-item"><img src="item9.jpg" alt="Achievement 9"></div>
+      <div class="gallery-item"><img src="item10.jpg" alt="Achievement 10"></div>
+      <div class="gallery-item"><img src="item11.jpg" alt="Achievement 11"></div>
+      <div class="gallery-item"><img src="item12.jpg" alt="Achievement 12"></div>
+      <div class="gallery-item"><img src="item13.jpg" alt="Achievement 13"></div>
+      <div class="gallery-item"><img src="item14.jpg" alt="Achievement 14"></div>
+    </div>
+  </section>
 
-/* Light mode adjustments */
-body.dark .animated-bg {
-  background: rgba(255, 255, 255, 0.9);
-  color: #222;
-}
+  <!-- Contact -->
+  <section id="contact" class="animated-bg">
+    <h2>Contact</h2>
+    <p>Connect with me on social media:</p>
+    <p>
+      <a href="https://www.instagram.com/sumeet_1_1" target="_blank">Instagram</a> |
+      <a href="https://www.facebook.com/profile.php?id=100073269189955" target="_blank">Facebook</a> |
+      <a href="https://youtube.com/@sumeet_cr7" target="_blank">YouTube</a> |
+      <a href="https://www.tiktok.com/@sumeet_cr77" target="_blank">TikTok</a>
+    </p>
+  </section>
+</main>
 
-/* Subtle moving gradient background */
-.animated-bg::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(120deg, #00f0ff, #0077ff, #00f0ff, #00ff7f);
-  background-size: 400% 400%;
-  z-index: -1;
-  animation: gradientMove 15s ease infinite;
-  opacity: 0.2;
-  border-radius: 12px;
-}
+<footer>
+  &copy; 2025 Sumit Dhakal. All Rights Reserved.
+</footer>
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Scroll reveal animation */
-section { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-section.visible { opacity: 1; transform: translateY(0); }
-</style>
+<!-- Modal for Achievements -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <button class="nav-btn prev">&#10094;</button>
+  <img class="modal-content" id="modalImg">
+  <button class="nav-btn next">&#10095;</button>
+</div>
 
 <script>
-// Scroll reveal
+// Dark / Light Mode
+const modeToggle=document.getElementById('modeToggle');
+const body=document.body;
+const savedMode=localStorage.getItem('mode')||'light';
+if(savedMode==='dark'){ body.classList.add('dark'); modeToggle.textContent='☀️'; } 
+else{ modeToggle.textContent='🌙'; }
+modeToggle.addEventListener('click', ()=>{
+  body.classList.toggle('dark');
+  modeToggle.textContent = body.classList.contains('dark') ? '☀️' : '🌙';
+  localStorage.setItem('mode', body.classList.contains('dark')?'dark':'light');
+});
+
+// Scroll Reveal
 function revealOnScroll(){
   document.querySelectorAll('section').forEach(section=>{
     const triggerBottom = window.innerHeight * 0.85;
@@ -88,4 +219,33 @@ function revealOnScroll(){
 }
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
+
+// Gallery Modal
+const modal=document.getElementById("myModal");
+const modalImg=document.getElementById("modalImg");
+const closeBtn=document.querySelector(".close");
+const prevBtn=document.querySelector(".prev");
+const nextBtn=document.querySelector(".next");
+const galleryImages=[...document.querySelectorAll(".gallery-item img")];
+let currentIndex=0;
+
+function openModal(index){
+  currentIndex=index;
+  modal.style.display="block";
+  modalImg.src=galleryImages[index].src;
+}
+galleryImages.forEach((img,i)=>{ img.addEventListener('click',()=>openModal(i)); });
+closeBtn.addEventListener('click',()=>modal.style.display="none");
+prevBtn.addEventListener('click',()=>{
+  currentIndex = (currentIndex-1 + galleryImages.length) % galleryImages.length;
+  modalImg.src = galleryImages[currentIndex].src;
+});
+nextBtn.addEventListener('click',()=>{
+  currentIndex = (currentIndex+1) % galleryImages.length;
+  modalImg.src = galleryImages[currentIndex].src;
+});
+window.addEventListener('click', e=>{ if(e.target==modal) modal.style.display="none"; });
 </script>
+
+</body>
+</html>
